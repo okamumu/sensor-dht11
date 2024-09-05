@@ -1,0 +1,8 @@
+{
+    "host": "13.230.249.44",
+    "port": "1883",
+    "topic": "sensor",
+    "pin": 14,
+    "wait": 1,
+    "location": "room 1"
+}
