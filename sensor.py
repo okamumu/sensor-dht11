@@ -2,6 +2,7 @@ import time
 import RPi.GPIO as GPIO
 import dht11
 import datetime
+import time
 import paho.mqtt.client as mqtt
 import json
 
@@ -10,10 +11,10 @@ json_file = 'config.json'
 with open(json_file) as f:
     config = json.load(f)
     host = config['host']
-    port = config['port']
+    port = int(config['port'])
     topic = config['topic']
-    pin = config['pin']
-    wait = config['wait']
+    pin = int(config['pin'])
+    wait = int(config['wait'])
     location = config['location']
 
 # initialize GPIO
@@ -32,7 +33,7 @@ try:
   while True:
     result = instance.read()
     if result.is_valid():
-      d = str(datetime.datetime.now())
+      d = str(time.time())
       print("Last valid input: " + d)
       data = {
         'timestamp': d,
